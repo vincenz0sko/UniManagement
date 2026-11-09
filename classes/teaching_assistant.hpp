@@ -11,7 +11,7 @@ class TeachingAssistant: public Student, public Employee
             TeachingAssistant();
             TeachingAssistant(const std::string&, const std::string&, unsigned, double, const std::string&);
         // Member Functions:    
-            void print() const override;
+            void print(std::ostream&) const override;
 };
 
 #endif

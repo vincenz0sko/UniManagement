@@ -10,12 +10,12 @@
     Person::~Person() {}
 
 // Member Functions:
-    void Person::print() const
+    void Person::print(std::ostream& os) const
     {
-        std::cout << "-- Personal Information --" << std::endl
-             << "Name: " << name << " | "
-             << "Surname: " << surname << " | "
-             << "Id: " << id << std::endl;
+        os << "-- Personal Information --" << std::endl
+           << "Name: " << name << " | "
+           << "Surname: " << surname << " | "
+           << "Id: " << id << std::endl;
     }
 
     inline std::string Person::get_name() const { return name; }

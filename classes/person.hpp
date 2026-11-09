@@ -1,6 +1,7 @@
 #ifndef PERSON_HPP
 #define PERSON_HPP
 
+#include <iostream>
 #include <string>
 
 class Person
@@ -17,7 +18,7 @@ class Person
         // Destructor:
             virtual ~Person();
         // Member Functions:
-            virtual void print() const;
+            virtual void print(std::ostream&) const;
             std::string get_name() const;
             std::string get_surname() const;
             unsigned get_id() const;

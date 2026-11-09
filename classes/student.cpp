@@ -8,23 +8,27 @@
     Student::Student(const std::string& n, const std::string& s, unsigned i): Person(n, s, i) {}
 
 // Member Functions:
-    void Student::print_student_info() const
+    void Student::print_student_info(std::ostream& os) const
     {
-       std::cout << "-- Courses --" << std::endl;
-        for (const auto& c : enrolled_curses)
-            std::cout << "Course Name: " << c.first << " | " << "Grade: " << c.second << std::endl;
-        std::cout << "Average Grade: " << average_grade << std::endl; 
+        os << "-- Courses --" << std::endl;
+        for (const auto& c : enrolled_courses)
+            os << "Course Name: " << c.first << " | " << "Grade: " << c.second << std::endl;
+        os << "Average Grade: " << average_grade << std::endl; 
     }
-    void Student::print() const
+    void Student::print(std::ostream& os) const
     {
-        Person::print();
-        print();
+        Person::print(os);
+        print_student_info(os);
     }
     void Student::add_course(const std::string& course_name, unsigned grade)
     {
-        enrolled_curses.insert({course_name, grade});
-        sum_of_grades += grade;
-        average_grade = sum_of_grades / enrolled_curses.size();
+        auto result = enrolled_courses.insert({course_name, grade});
+        if (result.second)
+        {
+            sum_of_grades += grade;
+            average_grade = sum_of_grades / enrolled_courses.size();
+        }
+            
     }
 
     inline double Student::get_average() const { return average_grade; }

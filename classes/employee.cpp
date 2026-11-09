@@ -4,20 +4,21 @@
 
 // Constructors:
     Employee::Employee() = default;
+    Employee::Employee(double sa, const std::string& d): salary(sa), department(d) {}
     Employee::Employee(const std::string& n, const std::string& s, unsigned i, double sa, const std::string& d):
         Person(n, s, i), salary(sa), department(d) {}
 
 // Member Functions:
-    void Employee::print_employee_info() const
+    void Employee::print_employee_info(std::ostream& os) const
     {
-        std::cout << "-- Work Information --" << std::endl
+        os << "-- Work Information --" << std::endl
                   << "Salary: " << salary << " | "
                   << "Department: " << department << std::endl;
     }
-    void Employee::print() const
+    void Employee::print(std::ostream& os) const
     {
-        Person::print();
-        print();
+        Person::print(os);
+        print_employee_info(os);
     }
     
     inline double Employee::get_salary() const { return salary; }

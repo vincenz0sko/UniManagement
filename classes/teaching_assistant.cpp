@@ -8,12 +8,12 @@
 // Constructors:
     TeachingAssistant::TeachingAssistant() = default;
     TeachingAssistant::TeachingAssistant(const std::string& n, const std::string& s, unsigned i, 
-        double sa, const std::string& d): Employee(n, s, i, sa, d) {}
+        double sa, const std::string& d): Person(n, s, i ), Employee(sa, d) {}
 
 // Member Functions:
-    void TeachingAssistant::print() const
+    void TeachingAssistant::print(std::ostream& os) const
     {
-        Person::print();
-        print_student_info();
-        print_employee_info();
+        Person::print(os);
+        print_student_info(os);
+        print_employee_info(os);
     }
