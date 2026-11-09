@@ -9,7 +9,7 @@ TARGET = build/UniManagement
 
 all: 
   mkdir -p builc
-    $(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)
+  $(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)
 
 clean:
   rm -rf build
