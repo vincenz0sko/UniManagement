@@ -43,7 +43,7 @@
     }
     void Student::addCourse(const Course* course)
     {
-        if (!course || isInCourse(course))
+        if (course && !isInCourse(course))
             enrolled_courses.push_back(course);
         
     }
