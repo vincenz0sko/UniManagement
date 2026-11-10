@@ -21,3 +21,13 @@
     inline std::string Person::get_name() const { return name; }
     inline std::string Person::get_surname() const { return surname; }
     inline unsigned Person::get_id() const { return id; }
+
+// Operators:
+    bool Person::operator==(const Person& other) const
+    {
+        return name == other.name && surname == other.surname && id == other.id;
+    }
+    bool Person::operator!=(const Person& other) const
+    {
+        return !(*this == other);
+    }

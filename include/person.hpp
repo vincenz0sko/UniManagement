@@ -22,6 +22,12 @@ class Person
             std::string get_name() const;
             std::string get_surname() const;
             unsigned get_id() const;
+        // Operators:
+            virtual bool operator==(const Person&) const;
+            virtual bool operator!=(const Person&) const;
+        // Deleted:
+            Person(const Person&) = delete;
+            Person& operator=(const Person&) = delete;
 };
 
 
