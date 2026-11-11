@@ -14,6 +14,5 @@
     void TeachingAssistant::print(std::ostream& os) const
     {
         Person::print(os);
-        print_student_info(os);
         print_employee_info(os);
     }

@@ -4,30 +4,27 @@
 #include <list>
 #include <string>
 
-class Student;
+#include "exam.hpp"
 
 class Course
 {
     private:
         // Data:
             std::string course_name;
-            std::list<const Student*> enrolled_students;
-        // Member Functions:
-            bool isEnrolled(const Student* target) const;
+            std::list<Exam> exams;
+        // Functions:
+            bool isPresent(const Exam&) const;
     public:
         // Constructor: 
             Course(const std::string&);
-        // Member Functions:    
-            void addStudent(const Student*);
-            void removeStudent(const Student*);
-            std::string getName() const {return course_name; }
-            std::list<const Student*> getStudents() const { return enrolled_students;}
+        // Functions:
+            void addExam(const Exam&);
+            void removeExam(const Exam&);
+            const std::string& getName() const {return course_name; }
+            std::list<Exam> getExams() const { return exams; }
         // Operators:
             bool operator==(const Course&) const;
             bool operator!=(const Course&) const;
-        // Deleted:
-            Course(const Course&) = delete;
-            Course& operator=(const Course&) = delete;
 };
 
 

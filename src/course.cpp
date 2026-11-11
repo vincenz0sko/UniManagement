@@ -8,26 +8,25 @@ class Student;
 // Constructor:
     Course::Course(const std::string& n): course_name(n) {}
 
-// Member Functions:
-    bool Course::isEnrolled(const Student* target) const
+// Functions:
+    bool Course::isPresent(const Exam& target) const
     {
-        for (const Student* s : enrolled_students)
-            if (s == target)
+        for (const auto& e : exams)
+            if (e == target)
                 return true;
         return false;
     }
-    void Course::addStudent(const Student* std)
+    void Course::addExam(const Exam& exam)
     {
-        if (!std || isEnrolled(std))
-            return;
-        enrolled_students.push_back(std);
+        if (!isPresent(exam))
+            exams.push_back(exam);
     }
-    void Course::removeStudent(const Student* std)
+    void Course::removeExam(const Exam& exam)
     {
-        for (auto iter = enrolled_students.begin(); iter != enrolled_students.end(); ++iter)
-            if (*iter == std)
+        for (auto iter = exams.begin(); iter != exams.end(); ++iter)
+            if (*iter == exam)
             {
-                enrolled_students.erase(iter);
+                exams.erase(iter);
                 return;
             }
     }
@@ -35,9 +34,7 @@ class Student;
 // Operators:
     bool Course::operator==(const Course& other) const
     {
-        if (course_name != other.course_name)
-            return false;
-        return enrolled_students == other.enrolled_students;
+        return course_name == other.course_name;
     }
     bool Course::operator!=(const Course& other) const
     {
